@@ -311,8 +311,8 @@ void tumKirmiziYol4Yesil() {
 
 // Mod 2: Yanıp sönen mod
 void yanipSonenMod() {
-  // Ana yollar (Yol 1 ve 3): Kırmızı yanıp söner (pinler 13 ve 7)
-  // Tali yollar (Yol 2 ve 4): Sarı yanıp söner (pinler 9 ve 3)
+  // Ana yollar (Yol 1 ve 3): Sarı yanıp söner (pinler 12 ve 6)
+  // Tali yollar (Yol 2 ve 4): Kırmızı yanıp söner (pinler 10 ve 4)
   // Yaya geçitleri: Kırmızı sabit yanar (yeşil pinleri kapalı tutar)
   
   // Yaya yeşil ışıklarını kapat (böylece sadece kırmızılar yanar)
@@ -325,19 +325,19 @@ void yanipSonenMod() {
     if (mod == 1) break;
     
     // Işıkları yak
-    digitalWrite(red1, HIGH);     // Yol 1 kırmızı (pin 13)
-    digitalWrite(red3, HIGH);     // Yol 3 kırmızı (pin 7)
-    digitalWrite(yellow2, HIGH);  // Yol 2 sarı (pin 9)
-    digitalWrite(yellow4, HIGH);  // Yol 4 sarı (pin 3)
+    digitalWrite(yellow1, HIGH);  // Yol 1 sarı (pin 12)
+    digitalWrite(yellow3, HIGH);  // Yol 3 sarı (pin 6)
+    digitalWrite(red2, HIGH);     // Yol 2 kırmızı (pin 10)
+    digitalWrite(red4, HIGH);     // Yol 4 kırmızı (pin 4)
     
     // Diğer tüm ışıkları söndür
-    digitalWrite(yellow1, LOW);
+    digitalWrite(red1, LOW);
     digitalWrite(green1, LOW);
-    digitalWrite(red2, LOW);
+    digitalWrite(yellow2, LOW);
     digitalWrite(green2, LOW);
-    digitalWrite(yellow3, LOW);
+    digitalWrite(red3, LOW);
     digitalWrite(green3, LOW);
-    digitalWrite(red4, LOW);
+    digitalWrite(yellow4, LOW);
     digitalWrite(green4, LOW);
     
     delay(500);
@@ -345,10 +345,10 @@ void yanipSonenMod() {
     if (mod == 1) break;
     
     // Trafik ışıklarını söndür (yaya ışıkları kapalı kalır)
-    digitalWrite(red1, LOW);
-    digitalWrite(red3, LOW);
-    digitalWrite(yellow2, LOW);
-    digitalWrite(yellow4, LOW);
+    digitalWrite(yellow1, LOW);
+    digitalWrite(yellow3, LOW);
+    digitalWrite(red2, LOW);
+    digitalWrite(red4, LOW);
     
     delay(500);
     butonKontrol();
