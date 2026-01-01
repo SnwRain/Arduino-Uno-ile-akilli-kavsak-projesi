@@ -34,7 +34,8 @@ Sistemde iki temel çalışma modu bulunur ve modlar arası geçiş **buton** ar
 4. **Mod Değişimi:** Devreye bağlı butona basarak Gündüz ve Gece modları arasında geçiş yapabilirsiniz.
 
 ## 🔌 Devre Şeması
-**
+<img width="1078" height="1110" alt="image" src="https://github.com/user-attachments/assets/cd0c8285-df05-48c3-94ca-28010d71a743" />
+
 
 ---
 *Bu proje Arduino öğrenimi ve trafik sistemlerinin mantığını kavramak amacıyla geliştirilmiştir.*
