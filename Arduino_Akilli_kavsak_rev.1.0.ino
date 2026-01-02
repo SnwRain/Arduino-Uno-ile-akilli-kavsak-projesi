@@ -23,6 +23,8 @@ int butonPin = A2;
 int yaya1 = A3;  // Yol 1 için yaya ışığı
 int yaya2 = A4;  // Yol 2 için yaya ışığı
 int yaya3 = A5;  // Yol 3 için yaya ışığı
+int yaya4Yesil = 1;   // Yol 4 için yaya yeşil ışığı (D1 pini)
+int yaya4Kirmizi = 0; // Yol 4 için yaya kırmızı ışığı (D0 pini)
 
 // Mesafe eşiği (cm cinsinden)
 int mesafeEsik = 20;
@@ -61,8 +63,11 @@ void setup() {
   pinMode(yaya1, OUTPUT);
   pinMode(yaya2, OUTPUT);
   pinMode(yaya3, OUTPUT);
+  pinMode(yaya4Yesil, OUTPUT);
+  pinMode(yaya4Kirmizi, OUTPUT);
   
-  Serial.begin(9600);
+  // NOT: Serial.begin() KALDIRILDI - D0/D1 pinlerini kullanmak için
+  // Serial monitör çalışmayacak ama D0/D1 pinleri normal çalışacak
 }
 
 // Mesafe ölçme fonksiyonu
@@ -90,10 +95,10 @@ void butonKontrol() {
       // Mod değiştir
       if (mod == 1) {
         mod = 2;
-        Serial.println("Mod 2'ye geçildi - Yanıp sönen mod");
+        // Serial.println kaldırıldı - D0/D1 için
       } else {
         mod = 1;
-        Serial.println("Mod 1'e geçildi - Normal mod");
+        // Serial.println kaldırıldı - D0/D1 için
       }
       sonBasmaZamani = simdikiZaman;
     }
@@ -118,6 +123,8 @@ void tumIsiklariKapat() {
   digitalWrite(yaya1, LOW);
   digitalWrite(yaya2, LOW);
   digitalWrite(yaya3, LOW);
+  digitalWrite(yaya4Yesil, LOW);
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function to turn on green light for direction 1 and red for others
@@ -139,6 +146,8 @@ void case1() {
   digitalWrite(yaya1, LOW);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function for yellow light for direction 1
@@ -160,6 +169,8 @@ void case2() {
   digitalWrite(yaya1, LOW);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function to turn on green light for direction 2
@@ -181,6 +192,8 @@ void case3() {
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, LOW);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function for yellow light for direction 2
@@ -202,6 +215,8 @@ void case4() {
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, LOW);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function to turn on green light for direction 3
@@ -223,6 +238,8 @@ void case5() {
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, LOW);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function for yellow light for direction 3
@@ -244,6 +261,8 @@ void case6() {
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, LOW);
+  digitalWrite(yaya4Yesil, HIGH);    // Yol 4 kırmızı, yaya yeşil
+  digitalWrite(yaya4Kirmizi, LOW);
 }
 
 // Function to turn on green light for direction 4 (sensör tetiklendiğinde)
@@ -261,10 +280,12 @@ void case7() {
   digitalWrite(yellow4, LOW);
   digitalWrite(green4, HIGH);
   
-  // Yol 4 (tali yol) yeşil olduğunda tüm yaya ışıkları açık
+  // Yol 4 (tali yol) yeşil olduğunda - yaya kırmızı yanar
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, LOW);     // Yol 4 yeşil, yaya yeşil KAPALI
+  digitalWrite(yaya4Kirmizi, HIGH);  // Yol 4 yeşil, yaya kırmızı AÇIK
 }
 
 // Function for yellow light for direction 4
@@ -286,6 +307,8 @@ void case8() {
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, LOW);     // Yol 4 sarı, yaya yeşil KAPALI
+  digitalWrite(yaya4Kirmizi, HIGH);  // Yol 4 sarı, yaya kırmızı AÇIK
 }
 
 // Tüm yolları kırmızıya çevir (4. yol hariç yeşil)
@@ -303,10 +326,12 @@ void tumKirmiziYol4Yesil() {
   digitalWrite(yellow4, LOW);
   digitalWrite(green4, HIGH);
   
-  // Yol 4 yeşil olduğunda tüm yaya ışıkları açık
+  // Yol 4 yeşil olduğunda - yaya kırmızı yanar
   digitalWrite(yaya1, HIGH);
   digitalWrite(yaya2, HIGH);
   digitalWrite(yaya3, HIGH);
+  digitalWrite(yaya4Yesil, LOW);     // Yol 4 yeşil, yaya yeşil KAPALI
+  digitalWrite(yaya4Kirmizi, HIGH);  // Yol 4 yeşil, yaya kırmızı AÇIK
 }
 
 // Mod 2: Yanıp sönen mod
@@ -319,6 +344,8 @@ void yanipSonenMod() {
   digitalWrite(yaya1, LOW);
   digitalWrite(yaya2, LOW);
   digitalWrite(yaya3, LOW);
+  digitalWrite(yaya4Yesil, LOW);
+  digitalWrite(yaya4Kirmizi, LOW);
   
   while (mod == 2) {
     butonKontrol();
@@ -374,7 +401,7 @@ void loop() {
   
   if (mesafe > 0 && mesafe < mesafeEsik) {
     // Sensör tetiklendi - 4. yolu yeşile çevir
-    Serial.println("Sensör tetiklendi! Yol 4 yeşil.");
+    // Serial.println kaldırıldı - D0/D1 için
     tumKirmiziYol4Yesil();
     
     // 7 saniye boyunca buton kontrolü yap
