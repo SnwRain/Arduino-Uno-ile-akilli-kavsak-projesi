@@ -40,7 +40,8 @@ Proje, taşınabilir olması için **9V Pil** ile beslenmektedir ve enerji kontr
 | **9V Pil** | 1 | Taşınabilir güç kaynağı |
 
 ## 🔌 Devre Şeması
-<img width="932" height="1058" alt="image" src="https://github.com/user-attachments/assets/c2239d73-843b-4211-8e7c-44436f10cd8b" />
+<img width="949" height="902" alt="image" src="https://github.com/user-attachments/assets/ff8ae629-8edf-4870-a000-7fdcb67e041f" />
+
 
 
 
